@@ -30,6 +30,53 @@ A RESTful API for task management with user authentication, built with Node.js, 
 
 ## Installation
 
+### Option 1: Docker (Recommended) 🐳
+
+**Quick start with Docker Compose:**
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd task-management-api
+   ```
+
+2. **Configure environment**
+   ```bash
+   # Copy the environment template
+   cp env.docker.example .env.docker
+   
+   # Generate JWT secrets
+   node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+   # Copy output to JWT_ACCESS_SECRET in .env.docker
+   
+   node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+   # Copy output to JWT_REFRESH_SECRET in .env.docker
+   ```
+
+3. **Start the application**
+   ```bash
+   # Production mode
+   docker-compose --env-file .env.docker up -d
+   
+   # Development mode (with hot reload)
+   docker-compose -f docker-compose.dev.yml --env-file .env.docker up
+   ```
+
+4. **Verify it's running**
+   ```bash
+   # Check health
+   curl http://localhost:3000/health
+   
+   # View logs
+   docker-compose logs -f
+   ```
+
+**See [DOCKER.md](DOCKER.md) for complete Docker documentation.**
+
+---
+
+### Option 2: Local Installation
+
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
