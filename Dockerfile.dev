@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install ALL dependencies (including dev dependencies for nodemon)
 RUN npm ci
 
+# Install nodemon globally as a fallback
+RUN npm install -g nodemon
+
 # Copy application code
 COPY . .
 
